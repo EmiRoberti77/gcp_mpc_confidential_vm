@@ -26,8 +26,14 @@
   },
   "homepage": "https://github.com/EmiRoberti77/gcp_mpc_confidential_vm#readme",
   "devDependencies": {
+    "@types/axios": "^0.14.4",
     "@types/node": "^22.10.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@google-cloud/compute": "^4.11.0",
+    "axios": "^1.7.9",
+    "google-auth-library": "^9.15.1"
   }
 }
