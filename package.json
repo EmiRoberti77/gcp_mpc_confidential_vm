@@ -1,0 +1,33 @@
+{
+  "name": "gcp_mpc_service",
+  "version": "1.0.0",
+  "description": "Multi Party Computation",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmiRoberti77/gcp_mpc_confidential_vm.git"
+  },
+  "keywords": [
+    "GCP",
+    "google",
+    "cloud",
+    "Multi",
+    "Party",
+    "Computation",
+    "encryption"
+  ],
+  "author": "Emi Roberti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmiRoberti77/gcp_mpc_confidential_vm/issues"
+  },
+  "homepage": "https://github.com/EmiRoberti77/gcp_mpc_confidential_vm#readme",
+  "devDependencies": {
+    "@types/node": "^22.10.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
