@@ -29,29 +29,51 @@ async function createConfidentialVM() {
     zone: zone,
     instanceResource: {
       name: instanceName,
-      machineType: `zones/${zone}/machineTypes/n2d-standard-4`, // Adjust machine type as needed
+      machineType: `zones/${zone}/machineTypes/n2d-standard-4`,
       disks: [
         {
           boot: true,
           initializeParams: {
             sourceImage:
-              'projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts', // Example: Ubuntu 20.04
+              'projects/ubuntu-os-cloud/global/images/family/ubuntu-2004-lts',
           },
         },
       ],
       networkInterfaces: [
         {
-          name: 'global/networks/default', // Default VPC network
+          name: 'global/networks/default',
           accessConfigs: [
             {
-              name: 'External NAT', // Required for external IP
+              name: 'External NAT',
               type: 'ONE_TO_ONE_NAT',
             },
           ],
         },
       ],
       confidentialInstanceConfig: {
-        enableConfidentialCompute: true, // This enables Confidential VM
+        enableConfidentialCompute: true,
+      },
+      metadata: {
+        items: [
+          {
+            key: 'startup-script',
+            value: `#!/bin/bash
+              # Install Node.js
+              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+              sudo apt-get install -y nodejs
+              
+              # Clone your MPC service repository
+              git clone https://github.com/EmiRoberti77/node_mpc_server /home/mpc-service
+              
+              # Navigate to the service directory and install dependencies
+              cd /home/mpc-service
+              npm install
+              
+              # Start the MPC service
+              nohup npm start &
+            `,
+          },
+        ],
       },
     },
   };
